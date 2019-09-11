@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const filePath = "SLACK_DARK_THEME_PATH";
   const IS_DARK_KEY = "isDark";
 
+  require('electron').remote.getCurrentWindow().toggleDevTools();
+
   fs.readFile(filePath, {
     encoding: 'utf-8'
   }, function(err, css) {
