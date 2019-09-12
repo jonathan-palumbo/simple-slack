@@ -101,6 +101,10 @@ document.addEventListener('DOMContentLoaded', function () {
                         disableNyanCatMode();
                     }
                 }
+
+                if (e.target.dataset && e.target.dataset['qa'] === "reactji") {
+                    console.log("works");
+                }
             });
         }
     });
