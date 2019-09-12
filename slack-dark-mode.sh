@@ -70,6 +70,7 @@ if [[ "$UPDATE_ONLY" == "false" ]]; then
     sudo "PATH=$PATH" npx asar extract $SLACK_RESOURCES_DIR/app.asar $SLACK_RESOURCES_DIR/app.asar.unpacked
 
     # Add JS Code to Slack
+    sed -i -e '2,$d' $SLACK_FILEPATH
     sudo tee -a "$SLACK_FILEPATH" > /dev/null < $SLACK_EVENT_LISTENER
 
     # Insert the CSS File Location in JS
