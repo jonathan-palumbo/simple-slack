@@ -21,16 +21,19 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             document.addEventListener("keydown", event => {
+                // Enter Focus "Dwyer" Mode
                 if (event.ctrlKey && event.keyCode === 68) {
                     const focusing = JSON.parse(localStorage.getItem(IS_FOCUS_MODE));
                     focusing ? head.removeChild(styleEl) : head.append(styleEl);
                     localStorage.setItem(IS_FOCUS_MODE, !focusing);
                 }
 
+                // Toggle Dev Tools
                 if (event.ctrlKey && event.keyCode === 73) {
                     require('electron').remote.getCurrentWindow().toggleDevTools();
                 }
 
+                // Move focus to a message
                 for(i=49; i<=57; i++) {
                     // let getSiblings = function (elem) {
                     //     // Setup siblings array and get the first sibling
@@ -59,11 +62,17 @@ document.addEventListener('DOMContentLoaded', function () {
                         // });
                     }
                 }
+
+                // Reacji Hotkeys (opens on whichever post you are hovering on)
+                if (event.ctrlKey && event.keyCode === 69) {
+                    let react = document.querySelector("button[data-qa='add_reaction_action']");
+                    react.click();
+                }
             });
 
             document.addEventListener("click", e => {
                 console.dir(e);
-                if ((e.target.dataset && e.target.dataset['qa'] === "start_thread") || (e.target.parentElement.dataset && e.target.parentElement.dataset['qa'] === "start_thread")) {
+                if ((e.target.dataset && e.target.dataset['qa'] === "start_thread") || (e.target.parentElement.dataset && e.target.parentElement.dataset['qa'] === "start_thread") || (e.target.dataset && e.target.dataset['qa'] === "reply_bar") || (e.target.parentElement.dataset && e.target.parentElement.dataset['qa'] === "reply_bar")) {
                     showSecondaryView();
                 }
 
@@ -71,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     hideSecondaryView();
                 }
 
-            })
+            });
         }
     });
 
