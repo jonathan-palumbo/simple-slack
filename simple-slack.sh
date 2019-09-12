@@ -33,7 +33,7 @@ sudo cp -af simple-slack.css "$THEME_FILEPATH"
  sudo tee -a "$SLACK_FILEPATH" > /dev/null < $SLACK_EVENT_LISTENER
 
  # Insert the CSS File Location in JS
- sudo sed -i -e s@SLACK_DARK_THEME_PATH@$THEME_FILEPATH@g $SLACK_FILEPATH
+ sudo sed -i -e s@CSS_FILE_PATH@$THEME_FILEPATH@g $SLACK_FILEPATH
 
  # Pack the Asar Archive for Slack
  sudo "PATH=$PATH" npx asar pack $SLACK_RESOURCES_DIR/app.asar.unpacked $SLACK_RESOURCES_DIR/app.asar

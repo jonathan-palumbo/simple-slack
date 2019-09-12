@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     const fs = require('fs');
-    const filePath = "SLACK_DARK_THEME_PATH";
+    const filePath = "CSS_FILE_PATH";
     const IS_FOCUS_MODE = "isFocus";
 
     fs.readFile(filePath, {
