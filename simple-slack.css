@@ -1,21 +1,44 @@
 
-.p-workspace__banner, .p-workspace__top_nav, .p-workspace__sidebar
+.p-workspace__banner, .p-workspace__top_nav, .p-workspace__sidebar, .p-client__team_sidebar
 {
-  display:none;
+    display:none;
 }
 
-.p-workspace__secondary_view.dn {
-  display:none;
-  overflow: hidden;
-}
-
-.p-workspace__primary_view.dn {
-  display:none;
-
+.p-workspace__primary_view.dn, .p-workspace__secondary_view.dn {
+    display:none;
 }
 
 .p-workspace {
-  grid-template-columns: auto;
-  grid-template-rows: auto;
-  grid-template-areas: "p-workspace__primary_view";
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-template-areas: "p-workspace__primary_view";
+    margin-top: 30px;
+}
+.p-client--show-team-sidebar {
+    grid-template-columns: 0 auto;
+}
+/* .c-virtual_list__item[aria-expanded='false'] {
+  filter: blur(3px);
+} */
+/* .c-virtual_list__item[aria-expanded='false']:focus {
+  filter: none;
+} */
+/* .c-virtual_list__item[aria-expanded='false']:hover {
+  filter: none;
+} */
+div.c-aspect_box__content {
+    background-image: url("https://static.thenounproject.com/png/372554-200.png");
+    background-repeat: no-repeat;
+}
+div.c-aspect_box__content > a[href$=".gif"], button.c-reaction > img[src$=".gif"] {
+    visibility: hidden;
+}
+div.c-aspect_box__content:hover > a[href$=".gif"], button.c-reaction:hover > img[src$=".gif"] {
+    visibility: visible;
+}
+.c-link .c-message_attachment__image {
+    visibility: hidden;
+}
+div:hover > .c-link .c-message_attachment__image {
+    visibility: visible;
 }
