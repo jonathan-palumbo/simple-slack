@@ -2,13 +2,23 @@ document.addEventListener('DOMContentLoaded', function () {
     const fs = require('fs');
     const filePath = "CSS_FILE_PATH";
     const IS_FOCUS_MODE = "isFocus";
+    const nyanStyle = document.createElement("style");
+    nyanStyle.innerText = ".p-workspace__primary_view.nyan img {";
+    nyanStyle.innerText += 'content: url(\"https://emoji.slack-edge.com/T024FBURD/nyancat/a61d90fc4b3f7969.gif\");';
+    nyanStyle.innerText += ' }';
+    nyanStyle.innerText = " .p-workspace__primary_view.nyan img{";
+    nyanStyle.innerText += 'content: url("https://emoji.slack-edge.com/T024FBURD/nyancat/a61d90fc4b3f7969.gif");';
+    nyanStyle.innerText += ' }';
+    const nyanJam = new Audio("http://www.nyan.cat/music/original.mp3");
+    nyanJam.loop = true;
+    const head = document.querySelector("head");
 
     fs.readFile(filePath, {
         encoding: 'utf-8'
     }, function (err, css) {
         if (!err) {
             const styleEl = document.createElement("style");
-            const head = document.querySelector("head");
+
             styleEl.innerHTML = css;
 
             if (localStorage.getItem(IS_FOCUS_MODE) === null) {
@@ -34,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 // Move focus to a message
-                for(i=49; i<=57; i++) {
+                for (i = 49; i <= 57; i++) {
                     // let getSiblings = function (elem) {
                     //     // Setup siblings array and get the first sibling
                     //     var siblings = [];
@@ -80,9 +90,34 @@ document.addEventListener('DOMContentLoaded', function () {
                     hideSecondaryView();
                 }
 
+                if (e.target.alt === "nyancat" && e.altKey) {
+                    if (nyanJam.paused) {
+                        const decision = confirm("Its take true strength to wield the power of Nyan Cat mode, Are you sure you want to enter Nyan Cat mode?");
+
+                        if (decision) {
+                            enableNyanCatMode();
+                        }
+                    } else {
+                        disableNyanCatMode();
+                    }
+                }
             });
         }
     });
+
+    function enableNyanCatMode() {
+        head.append(nyanStyle);
+        nyanJam.play();
+        document.getElementsByClassName("p-workspace__secondary_view")[0].classList.add("nyan");
+        document.getElementsByClassName("p-workspace__primary_view")[0].classList.add("nyan");
+    }
+
+    function disableNyanCatMode() {
+        head.removeChild(nyanStyle);
+        nyanJam.pause();
+        document.getElementsByClassName("p-workspace__secondary_view")[0].classList.remove("nyan");
+        document.getElementsByClassName("p-workspace__primary_view")[0].classList.remove("nyan");
+    }
 
     function showSecondaryView() {
         document.getElementsByClassName("p-workspace__secondary_view")[0].classList.remove("dn");
