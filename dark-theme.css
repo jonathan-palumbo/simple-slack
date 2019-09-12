@@ -6,10 +6,12 @@
 
 .p-workspace__secondary_view.dn {
   display:none;
+  overflow: hidden;
 }
 
 .p-workspace__primary_view.dn {
   display:none;
+
 }
 
 .p-workspace {

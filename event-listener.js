@@ -31,47 +31,20 @@ document.addEventListener('DOMContentLoaded', function () {
                     require('electron').remote.getCurrentWindow().toggleDevTools();
                 }
             });
+
+            document.addEventListener("click", e => {
+                console.dir(e);
+                if ((e.target.dataset && e.target.dataset['qa'] === "start_thread") || (e.target.parentElement.dataset && e.target.parentElement.dataset['qa'] === "start_thread")) {
+                    showSecondaryView();
+                }
+
+                if ((e.target.dataset && e.target.dataset['qa'] === "close_flexpane") || (e.target.parentElement.dataset && e.target.parentElement.dataset['qa'] === "close_flexpane")) {
+                    hideSecondaryView();
+                }
+
+            })
         }
     });
-
-    function observeWorkspacePrimaryView(handlers) {
-        const allTheThings = document.getElementsByTagName("body")[0];
-        const defaultHandler = {
-            handle: () => {
-            }
-        };
-
-        const observer = new MutationObserver((mutations) => {
-            // mutations.map(console.dir);
-            mutations.map(m => (handlers.find(h => h.canHandle(Array.from(m.addedNodes))) || defaultHandler).handle(Array.from(m.addedNodes)));
-        });
-
-        observer.observe(allTheThings, {attributes: false, childList: true, subtree: true});
-    }
-
-    function mutationHandler(selector, event, handler){
-        const findTarget = (nodes) => nodes.find(n => n.querySelector(selector));
-        const canHandle = (nodes) => {
-           return findTarget(nodes);
-        };
-
-        const handle = (nodes) => findTarget(nodes).addEventListener(event, handler);
-
-        return {
-            canHandle,
-            handle
-        }
-    }
-
-    function messageActionsHandler() {
-        return mutationHandler("[data-qa='start_thread']", "click", showSecondaryView);
-    }
-
-
-    function flexPaneMutationHandler() {
-        return mutationHandler("[data-qa='close_flexpane']", "click", hideSecondaryView);
-    }
-
 
     function showSecondaryView() {
         document.getElementsByClassName("p-workspace__secondary_view")[0].classList.remove("dn");
@@ -84,6 +57,4 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementsByClassName("p-workspace__primary_view")[0].classList.remove("dn");
     }
 
-
-    observeWorkspacePrimaryView([messageActionsHandler(), flexPaneMutationHandler()]);
 });
