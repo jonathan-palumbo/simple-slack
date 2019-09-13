@@ -68,6 +68,24 @@ document.addEventListener('DOMContentLoaded', function () {
                     let react = document.querySelector("button[data-qa='add_reaction_action']");
                     react.click();
                 }
+
+                if (event.ctrlKey && event.keyCode === 84) {
+                    let thread = document.querySelector("button[data-qa='start_thread']");
+                    thread.click();
+                }
+
+                // Threads hotkey works
+                // if (event.ctrlKey && event.keyCode === 190) {
+                //     console.log("taco");
+                //     if (document.getElementsByClassName("p-workspace__primary_view")[0].classList.contains("dn")) {
+                //         console.log("thread");
+                //         showSecondaryView();
+                //     }
+                //     else {
+                //         hideSecondaryView();
+                //         console.log("primary");
+                //     }
+                // }
             });
 
             document.addEventListener("click", e => {

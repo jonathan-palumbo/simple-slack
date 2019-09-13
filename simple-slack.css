@@ -7,10 +7,6 @@
     visibility: hidden;
 }
 
-.p-workspace__secondary_view.dn {
-    display:none;
-}
-
 .p-workspace__secondary_view {
     width: 99vw;
     margin-left: 0.5vw;
@@ -22,10 +18,6 @@
     grid-template-rows: auto;
     grid-template-areas: "p-workspace__primary_view";
     margin-top: 30px;
-}
-
-.p-workspace.dn {
-    grid-template-areas: "p-workspace__secondary_view";
 }
 
 .p-client--show-team-sidebar {
