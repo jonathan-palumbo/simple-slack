@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
     const fs = require('fs');
     const filePath = "CSS_FILE_PATH";
+    const drinksPath = "FOO";
     const IS_FOCUS_MODE = "isFocus";
+    let beveragesConsumed = 0;
     const nyanStyle = document.createElement("style");
     nyanStyle.innerText = ".p-workspace__primary_view.nyan img {";
     nyanStyle.innerText += 'content: url(\"https://emoji.slack-edge.com/T024FBURD/nyancat/a61d90fc4b3f7969.gif\");';
@@ -12,6 +14,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const nyanJam = new Audio("http://www.nyan.cat/music/original.mp3");
     nyanJam.loop = true;
     const head = document.querySelector("head");
+
+    fs.readFile(drinksPath, {
+        encoding: 'utf-8'
+    }, function (err, css) {
+        const styleEl = document.createElement("style");
+        styleEl.innerHTML = css;
+        head.appendChild(styleEl);
+    });
 
     fs.readFile(filePath, {
         encoding: 'utf-8'
@@ -90,6 +100,44 @@ document.addEventListener('DOMContentLoaded', function () {
                         }
                     } else {
                         disableNyanCatMode();
+                    }
+                }
+
+                if (e.target.parentElement.tagName === "BUTTON" && e.target.parentElement.classList.contains("p-emoji_picker__list_item")) {
+                    const beverages = ["beer", "beers", "champagne", "cocktail", "whiskey", "bud", "bud2", "tequila", "wine_glass", "whine-glass" ];
+                    const inebriationLevels  = ["buzzed", "tipsy", "hammered", "stupor", "drunk"];
+                    const emoji = e.target.dataset['stringifyEmoji'].replace(new RegExp(":", 'g'), "");
+
+                    console.log(emoji);
+
+                    if(beverages.includes(emoji)){
+                        beveragesConsumed++;
+                    }
+
+                    if(beveragesConsumed >= 2){
+                        setInibriationLevel(inebriationLevels[0]);
+                    }
+
+                    if(beveragesConsumed >= 3){
+                        setInibriationLevel(inebriationLevels[1]);
+                    }
+
+                    if(beveragesConsumed >= 4){
+                        setInibriationLevel(inebriationLevels[2]);
+                    }
+
+                    if(beveragesConsumed >= 5){
+                        setInibriationLevel(inebriationLevels[3]);
+                    }
+
+                    if(beveragesConsumed >= 6){
+                        setInibriationLevel(inebriationLevels[4]);
+                    }
+
+                    function setInibriationLevel(level){
+                        const body = document.querySelector("body");
+                        body.classList.add(level);
+                        body.classList.remove(inebriationLevels.filter(il => il !== level));
                     }
                 }
             })
