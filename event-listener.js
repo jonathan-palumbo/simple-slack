@@ -102,9 +102,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 }
 
-                if (e.target.dataset && e.target.dataset['qa'] === "reactji") {
-                    console.log("works");
-                }
             });
         }
     });
