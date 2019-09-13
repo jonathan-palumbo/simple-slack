@@ -12,8 +12,9 @@
 }
 
 .p-workspace__secondary_view {
-    width: 100vw;
-    height: 100vh;
+    width: 99vw;
+    margin-left: 0.5vw;
+    border-left: none;
 }
 
 .p-workspace {

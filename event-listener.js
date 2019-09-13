@@ -170,11 +170,13 @@ document.addEventListener('DOMContentLoaded', function () {
     function showSecondaryView() {
         document.getElementsByClassName("p-workspace__secondary_view")[0].classList.remove("dn");
         document.getElementsByClassName("p-workspace__primary_view")[0].classList.add("dn");
+        document.getElementsByClassName("p-workspace")[0].style.gridTemplateAreas = "'p-workspace__secondary_view'";
     }
 
     function hideSecondaryView() {
         document.getElementsByClassName("p-workspace__secondary_view")[0].classList.add("dn");
         document.getElementsByClassName("p-workspace__primary_view")[0].classList.remove("dn");
+        document.getElementsByClassName("p-workspace")[0].style.gridTemplateAreas = "'p-workspace__primary_view'";
     }
 
 });
