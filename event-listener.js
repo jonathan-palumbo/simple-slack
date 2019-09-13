@@ -55,31 +55,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // Move focus to a message
                 for (i = 49; i <= 57; i++) {
-                    // let getSiblings = function (elem) {
-                    //     // Setup siblings array and get the first sibling
-                    //     var siblings = [];
-                    //     var sibling = elem.parentNode.firstChild;
-                    //     // Loop through each sibling and push to the array
-                    //     while (sibling) {
-                    //         if (sibling.nodeType === 1 && sibling !== elem) {
-                    //             siblings.push(sibling);
-                    //         }
-                    //         sibling = sibling.nextSibling
-                    //     }
-                    //     return siblings;
-                    // };
                     if (event.ctrlKey && event.keyCode === i) {
                         document.activeElement.blur();
                         let posts = document.querySelectorAll(".p-workspace__primary_view .c-virtual_list__item[aria-expanded='false']");
                         let postSelected = posts[posts.length - (i - 48)];
                         postSelected.focus();
-                        // postSibs = getSiblings(postSelected);
-                        // postSibs.forEach((sib) => {
-                        //     sib.style.opacity = "0.4";
-                        //     sib.style.filter = "blur(3px)";
-                        //     postSelected.style.opacity = "1";
-                        //     postSelected.style.filter = "none";
-                        // });
                     }
                 }
 
