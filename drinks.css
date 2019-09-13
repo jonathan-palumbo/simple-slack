@@ -1,0 +1,53 @@
+.buzzed {
+    filter: blur(1px);
+    transition: all 2s linear;
+}
+
+.tipsy {
+    filter: blur(2px);
+    transition: all 2s linear;
+}
+
+.hammered {
+    animation:  sway0 10s infinite ease-in-out;
+    transform-origin: 50% 100% 0;
+    transition: all 2s linear;
+}
+
+.stupor  {
+    animation: sway1 5s infinite;
+    transform-origin: 50% 100% 0;
+    transition: all 2s linear;
+}
+
+.drunk {
+    animation: sway2 4s infinite ease-in-out;
+    transform-origin: 50% 100% 0;
+    transition: all 2s linear;
+}
+
+.drunk > * {
+    animation: brighten 1s infinite alternate-reverse;
+    transform-origin: 0 100% 0;
+}
+
+@keyframes brighten {
+    0% {filter: brightness(75%);}
+    100% {filter: brightness(25%);}
+}
+
+
+@keyframes sway0 {
+    0%, 100%{ transform: scale(1,1.05) perspective(1px); filter: blur(3px); }
+    50%{ transform: scale(1.05,1) perspective(0px); filter: blur(1px); }
+}
+
+@keyframes sway1 {
+    0%, 100%{ border-radius:10px; transform: rotate(1deg) scale(1,1.1) perspective(0px) skewX(2deg) skewY(1deg); filter: blur(8px); }
+    50%{ border-radius:20px; transform: rotate(-1deg) scale(1.2, 1) perspective(1px) skewX(-1deg) skewY(0deg); filter: blur(2px); }
+}
+
+@keyframes sway2 {
+    0%, 100%{ border-radius:10px; transform: rotate(2deg) scale(1.1,1.3) perspective(1px) skewX(4deg) skewY(1deg); filter: blur(15px); }
+    50%{ border-radius:40px; transform: rotate(-3deg) scale(1.2, 1.3) perspective(3px) skewX(-1deg) skewY(-1deg); filter: blur(6px); }
+}
