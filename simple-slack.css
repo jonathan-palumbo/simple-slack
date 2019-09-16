@@ -60,16 +60,8 @@ div.c-aspect_box__content {
 {
     visibility: hidden;
 }
-.c-virtual_list__item:hover div.c-aspect_box__content > a[href$=".gif"],
-.c-virtual_list__item:focus div.c-aspect_box__content > a[href$=".gif"],
-.c-virtual_list__item:hover button.c-reaction > img[src$=".gif"],
-.c-virtual_list__item:focus button.c-reaction > img[src$=".gif"],
-.c-virtual_list__item:hover span.c-emoji > img[src$=".gif"],
-.c-virtual_list__item:focus span.c-emoji > img[src$=".gif"],
-.c-virtual_list__item:hover span img.c-emoji[src$=".gif"],
-.c-virtual_list__item:focus span img.c-emoji[src$=".gif"],
-.c-virtual_list__item:hover span.c-emoji img[src$=".gif"],
-.c-virtual_list__item:focus span.c-emoji img[src$=".gif"]
+.c-virtual_list__item:hover *,
+.c-virtual_list__item:focus *
 {
     visibility: visible;
 }
