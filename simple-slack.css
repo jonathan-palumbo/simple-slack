@@ -1,42 +1,75 @@
-
-.p-workspace__banner, .p-workspace__top_nav, .p-workspace__sidebar, .p-client__team_sidebar {
-    display:none;
-}
-
-.p-workspace__primary_view.dn {
-    visibility: hidden;
-}
-
-.p-workspace__secondary_view {
-    width: 99vw;
-    margin-left: 0.5vw;
-    border-left: none;
-}
-
+/* Set the grid to display only primary/secondary view in focus mode */
 .p-workspace {
     grid-template-columns: auto;
     grid-template-rows: auto;
-    grid-template-areas: "p-workspace__primary_view";
-    margin-top: 30px;
+    grid-template-areas: "p-workspace__primary_view p-workspace__secondary_view";
+    margin-top: 3vh;
 }
-
+.p-workspace__banner, .p-workspace__top_nav, .p-workspace__sidebar, .p-client__team_sidebar {
+    display:none;
+}
 .p-client--show-team-sidebar {
     grid-template-columns: 0 auto;
 }
 
+/* Primary view focus mode (full width) */
+.p-workspace__primary_view {
+    width: 100vw;
+}
+
+/* Secondary view focus mode (full width, fixed, z-indexed in front of primary view, background color set) */
+.p-workspace__secondary_view {
+    position: fixed;
+    width: 100vw;
+    height: 97vh;
+    margin-top: 2vh;
+    top: 0;
+    left: 0;
+    border-left: none;
+    z-index: 200;
+    background: rgb(255,255,255);
+}
+
+/* Dark mode background for secondary view */
+.sk-client-theme--dark .p-workspace__secondary_view {
+    background: rgb(26,29,33);
+}
+
+/* Prevent typing in primary_view when secondary_view (threads) is open */
+.p-workspace--context-pane-expanded .p-workspace__primary_view .ql-editor {
+    display: none;
+}
+
+/* Make preferences page (and other full screen modals) take up the full width in focus mode */
+.p-prefs_modal--sidebar-open-multi-team {
+    left: 0;
+}
+.p-prefs_modal {
+    left: 0;
+}
+
+/* Hide gifs except on hover/focus */
 div.c-aspect_box__content {
-    background-image: url("https://static.thenounproject.com/png/372554-200.png");
-    background-repeat: no-repeat;
+    background:url("https://static.thenounproject.com/png/372554-200.png") no-repeat top left;
 }
-div.c-aspect_box__content > a[href$=".gif"], button.c-reaction > img[src$=".gif"] {
+.c-virtual_list__item div.c-aspect_box__content > a[href$=".gif"],
+.c-virtual_list__item button.c-reaction > img[src$=".gif"],
+.c-virtual_list__item span.c-emoji > img[src$=".gif"],
+.c-virtual_list__item span img.c-emoji[src$=".gif"],
+.c-virtual_list__item span.c-emoji img[src$=".gif"]
+{
     visibility: hidden;
 }
-div.c-aspect_box__content:hover > a[href$=".gif"], button.c-reaction:hover > img[src$=".gif"] {
-    visibility: visible;
-}
-.c-link .c-message_attachment__image {
-    visibility: hidden;
-}
-div:hover > .c-link .c-message_attachment__image {
+.c-virtual_list__item:hover div.c-aspect_box__content > a[href$=".gif"],
+.c-virtual_list__item:focus div.c-aspect_box__content > a[href$=".gif"],
+.c-virtual_list__item:hover button.c-reaction > img[src$=".gif"],
+.c-virtual_list__item:focus button.c-reaction > img[src$=".gif"],
+.c-virtual_list__item:hover span.c-emoji > img[src$=".gif"],
+.c-virtual_list__item:focus span.c-emoji > img[src$=".gif"],
+.c-virtual_list__item:hover span img.c-emoji[src$=".gif"],
+.c-virtual_list__item:focus span img.c-emoji[src$=".gif"],
+.c-virtual_list__item:hover span.c-emoji img[src$=".gif"],
+.c-virtual_list__item:focus span.c-emoji img[src$=".gif"]
+{
     visibility: visible;
 }

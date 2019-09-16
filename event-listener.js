@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             document.addEventListener("keydown", event => {
+                console.log(event.which);
                 // Enter Focus "Dwyer" Mode
                 if (event.ctrlKey && event.keyCode === 68) {
                     const focusing = JSON.parse(localStorage.getItem(IS_FOCUS_MODE));
@@ -75,14 +76,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 // Threads hotkey works
-                // if (event.ctrlKey && event.keyCode === 190) {
+                // if (event.keyCode === 91 && event.keyCode === 190 || event.keyCode === 93 && event.keyCode === 190) {
                 //     console.log("taco");
                 //     if (document.getElementsByClassName("p-workspace__primary_view")[0].classList.contains("dn")) {
                 //         console.log("thread");
-                //         showSecondaryView();
+                //         hideSecondaryView();
                 //     }
                 //     else {
-                //         hideSecondaryView();
+                //         showSecondaryView();
                 //         console.log("primary");
                 //     }
                 // }
@@ -90,13 +91,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
             document.addEventListener("click", e => {
                 console.dir(e);
-                if ((e.target.dataset && e.target.dataset['qa'] === "start_thread") || (e.target.parentElement.dataset && e.target.parentElement.dataset['qa'] === "start_thread") || (e.target.dataset && e.target.dataset['qa'] === "reply_bar") || (e.target.parentElement.dataset && e.target.parentElement.dataset['qa'] === "reply_bar")) {
-                    showSecondaryView();
-                }
+                // if ((e.target.dataset && e.target.dataset['qa'] === "start_thread") || (e.target.parentElement.dataset && e.target.parentElement.dataset['qa'] === "start_thread") || (e.target.dataset && e.target.dataset['qa'] === "reply_bar") || (e.target.parentElement.dataset && e.target.parentElement.dataset['qa'] === "reply_bar")) {
+                //     showSecondaryView();
+                // }
 
-                if ((e.target.dataset && e.target.dataset['qa'] === "close_flexpane") || (e.target.parentElement.dataset && e.target.parentElement.dataset['qa'] === "close_flexpane")) {
-                    hideSecondaryView();
-                }
+                // if ((e.target.dataset && e.target.dataset['qa'] === "close_flexpane") || (e.target.parentElement.dataset && e.target.parentElement.dataset['qa'] === "close_flexpane")) {
+                //     hideSecondaryView();
+                // }
 
                 if (e.target.alt === "nyancat" && e.altKey) {
                     if (nyanJam.paused) {
@@ -165,16 +166,16 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementsByClassName("p-workspace__primary_view")[0].classList.remove("nyan");
     }
 
-    function showSecondaryView() {
-        document.getElementsByClassName("p-workspace__secondary_view")[0].classList.remove("dn");
-        document.getElementsByClassName("p-workspace__primary_view")[0].classList.add("dn");
-        document.getElementsByClassName("p-workspace")[0].style.gridTemplateAreas = "'p-workspace__secondary_view'";
-    }
+    // function showSecondaryView() {
+    //     document.getElementsByClassName("p-workspace__secondary_view")[0].classList.remove("dn");
+    //     document.getElementsByClassName("p-workspace__primary_view")[0].classList.add("dn");
+    //     document.getElementsByClassName("p-workspace")[0].style.gridTemplateAreas = "'p-workspace__secondary_view'";
+    // }
 
-    function hideSecondaryView() {
-        document.getElementsByClassName("p-workspace__secondary_view")[0].classList.add("dn");
-        document.getElementsByClassName("p-workspace__primary_view")[0].classList.remove("dn");
-        document.getElementsByClassName("p-workspace")[0].style.gridTemplateAreas = "'p-workspace__primary_view'";
-    }
+    // function hideSecondaryView() {
+    //     document.getElementsByClassName("p-workspace__secondary_view")[0].classList.add("dn");
+    //     document.getElementsByClassName("p-workspace__primary_view")[0].classList.remove("dn");
+    //     document.getElementsByClassName("p-workspace")[0].style.gridTemplateAreas = "'p-workspace__primary_view'";
+    // }
 
 });
