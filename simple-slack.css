@@ -21,9 +21,8 @@
 .p-workspace__secondary_view {
     position: fixed;
     width: 100vw;
-    height: 97vh;
-    margin-top: 2vh;
-    top: 0;
+    height: 98vh;
+    bottom: 0;
     left: 0;
     border-left: none;
     z-index: 200;
@@ -33,6 +32,18 @@
 /* Dark mode background for secondary view */
 .sk-client-theme--dark .p-workspace__secondary_view {
     background: rgb(26,29,33);
+}
+
+.sk-client-theme--dark .c-virtual_list__item button.c-reaction > img,
+.sk-client-theme--dark .c-virtual_list__item div.c-aspect_box__content > a,
+.sk-client-theme--dark .c-virtual_list__item span.c-emoji > img,
+.sk-client-theme--dark .c-virtual_list__item span img.c-emoji,
+.sk-client-theme--dark .c-virtual_list__item span.c-emoji img,
+.sk-client-theme--dark .p-emoji_picker__list_item > img {
+    background: white;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: contain;
 }
 
 /* Prevent typing in primary_view when secondary_view (threads) is open */
@@ -49,9 +60,6 @@
 }
 
 /* Hide gifs except on hover/focus */
-div.c-aspect_box__content {
-    background:url("https://static.thenounproject.com/png/372554-200.png") no-repeat top left;
-}
 .c-virtual_list__item div.c-aspect_box__content > a[href$=".gif"],
 .c-virtual_list__item button.c-reaction > img[src$=".gif"],
 .c-virtual_list__item span.c-emoji > img[src$=".gif"],
